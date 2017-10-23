@@ -17,7 +17,7 @@ Pre-requisites: The code is designed for Blender 2.71.
 Start blender as follows:
 
 ```
-blender -y Sophia.blend -P autostart.py
+./blender-2.71-linux-glibc211-x86_64/blender -y Sophia.blend -P autostart.py
 ```
 
 Sophia can be controlled via buttons in the blender GUI (note the panel
