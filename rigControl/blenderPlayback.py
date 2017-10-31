@@ -56,7 +56,8 @@ class BLGlobalTimer(bpy.types.Operator):
             wm.event_timer_remove(self._timer)
 
         bpy.context.scene['globalTimerStarted'] = False
-        return {'CANCELLED'}
+        #return {'CANCELLED'}
+        return None
 
     @classmethod
     def poll(cls, context):

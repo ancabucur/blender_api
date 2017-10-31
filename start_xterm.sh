@@ -1,0 +1,1 @@
+xterm -geometry 131x6+450+905 -title "..." -ls /bin/csh

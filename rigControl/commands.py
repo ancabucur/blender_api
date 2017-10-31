@@ -90,9 +90,15 @@ class EvaAPI(RigAPI):
             magnitude = round(cycle.magnitude, 3)
             rate = round(cycle.rate, 3)
             ease_in = round(cycle.ease_in, 3)
-            somaStates[cycle.name] = {'magnitude': magnitude, 'rate': rate,
+            somaStates[cycle.name] = {'name' : cycle.name.replace('CYC-', ''), 'magnitude': magnitude, 'rate': rate,
                 'ease_in': ease_in}
         return somaStates
+
+    def setSomaStateString(self, state_as_string):
+        actual_state = eval(state_as_string)
+        self.setSomaState(actual_state)
+        return 0
+
 
     def setSomaState(self, state):
         name = 'CYC-' + state['name']
@@ -121,6 +127,10 @@ class EvaAPI(RigAPI):
             emotionStates[emotion.name] = {'magnitude': magnitude}
         return emotionStates
 
+    # the function that gets a real dict instead of a string
+    def setEmotionStateReal(self, emotion):
+        bpy.evaAnimationManager.setEmotion(emotion)
+        return 0
 
     def setEmotionState(self, emotion):
         # TODO: expand arguments and update doc
