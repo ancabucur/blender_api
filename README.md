@@ -1,28 +1,14 @@
-# Sophia Blender Animation API
-
-This repository contains an animated model of the Sophia head, as a
-Blender file, as well as a Robot Operating System (ROS) node to control
-the model. The ROS node is automatically started when the blender
-file is loaded.
-
-The rigControl python module contains scripts to drive the model, as
-well as defining a public programming API. The rosrig python module
-contains ROS node implementation. The rigAPI module defines an abstract
-base class for controlling the rig: the ROS node uses this API, and
-rigControl implements it.
-
-# Running
-
-Pre-requisites: The code is designed for Blender 2.71.
-Start blender as follows:
-
-```
-./blender-2.71-linux-glibc211-x86_64/blender -y Sophia.blend -P autostart.py
+# Face Animation API
+```bash
+blender -y Sophia.blend -P autostart.py
+xterm -geometry 131x6+450+905 -title "..." -ls /bin/csh
+# in the xterm terminal type:
+python speak.py
 ```
 
-Sophia can be controlled via buttons in the blender GUI (note the panel
-on the right).  A HOWTO guide for manipulating via ROS can be found in
-the [Sophia cookbook](https://github.com/hansonrobotics/HEAD/blob/master/src/blender_api_msgs/cookbook.md)
+
+# About
+The code is designed for Blender 2.71, but it has been tested to work with Blender 2.78 too. Currently, autostart.py runs a socket server on the blender animation, which can be used to trigger gestures remotely. A separate script called __speak.py__ sends UDP packets to the socket server to make the model speak it's own code. For full effect, start an xterm with csh shell to print out the actual spoken text.
 
 
 # Design
@@ -41,8 +27,6 @@ the [Sophia cookbook](https://github.com/hansonrobotics/HEAD/blob/master/src/ble
 
 All animation sequences and 3D data are stored in the Blender file.
 
-# Copyright #
-
+### Copyright 
 Copyright (c) 2014,2015,2016 Hanson Robotics
-
 Copyright (c) 2014,2015 Mike Pan
